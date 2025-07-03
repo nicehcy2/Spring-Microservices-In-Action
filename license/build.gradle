@@ -30,6 +30,8 @@ dependencies {
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+	implementation 'com.google.code.gson:gson' /** gson */
+	implementation 'org.springframework.boot:spring-boot-starter-hateoas' /** 관련 링크를 표시하는 스프링 HATEOAS */
 }
 
 tasks.named('test') {

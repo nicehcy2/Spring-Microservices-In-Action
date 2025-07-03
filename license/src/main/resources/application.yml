@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: License Service
+  messages:
+    basename: messages         # messages.properties, messages_ko.properties ?? ???? ??
+    encoding: UTF-8            # ??? ?? ???
+  web:
+    locale: en
+    locale-resolver: accept_header
+
