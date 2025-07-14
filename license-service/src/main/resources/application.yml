@@ -1,0 +1,17 @@
+spring:
+  config:
+    import: "configserver:"
+  application:
+    name: licensing-service
+  profiles:
+    active: dev
+  cloud:
+    config:
+      uri: http://localhost:8071
+
+  messages:
+    basename: messages         # messages.properties, messages_ko.properties ?? ???? ??
+    encoding: UTF-8            # ??? ?? ???
+  web:
+    locale: en
+    locale-resolver: accept_header
