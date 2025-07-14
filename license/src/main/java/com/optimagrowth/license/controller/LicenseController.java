@@ -30,40 +30,36 @@ public class LicenseController {
                     .getLicense(organizationId, license.getLicenseId()))
                     .withSelfRel(),
                 linkTo(methodOn(LicenseController.class)
-                        .createLicense(organizationId, license, null))
+                        .createLicense(license))
                         .withRel("createLicense"),
                 linkTo(methodOn(LicenseController.class)
-                        .updateLicense(organizationId, license))
+                        .updateLicense(license))
                         .withRel("updateLicense"),
                 linkTo(methodOn(LicenseController.class)
-                        .deleteLicense(organizationId, license.getLicenseId()))
+                        .deleteLicense(license.getLicenseId()))
                         .withRel("deleteLicense"));
 
         return ResponseEntity.ok(license);
     }
 
     @PutMapping
-    public ResponseEntity<String> updateLicense(
-            @PathVariable String organizationId,
+    public ResponseEntity<License> updateLicense(
             @RequestBody License request) {
 
-        return ResponseEntity.ok(licenseService.updateLicense(request, organizationId));
+        return ResponseEntity.ok(licenseService.updateLicense(request));
     }
 
     @PostMapping
-    public ResponseEntity<String> createLicense(
-            @PathVariable String organizationId,
-            @RequestBody License request,
-            @RequestHeader(value = "Accept-Language", required = false) Locale locale) {
+    public ResponseEntity<License> createLicense(
+            @RequestBody License request) {
 
-        return ResponseEntity.ok(licenseService.createLicense(request, organizationId, locale));
+        return ResponseEntity.ok(licenseService.createLicense(request));
     }
 
     @DeleteMapping("/{licenseId}")
     public ResponseEntity<String> deleteLicense(
-            @PathVariable String organizationId,
             @PathVariable String licenseId) {
 
-        return ResponseEntity.ok(licenseService.deleteLicense(licenseId, organizationId));
+        return ResponseEntity.ok(licenseService.deleteLicense(licenseId));
     }
 }

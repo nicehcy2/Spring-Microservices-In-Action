@@ -8,7 +8,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class LicenseServiceTest {
 
-    private final LicenseService licenseService = new LicenseService();
+    private LicenseService licenseService;
 
     @DisplayName("라이센스 ID와 조직 ID를 주면 라이센스 정보를 반환한다.")
     @Test
@@ -37,7 +37,7 @@ class LicenseServiceTest {
 
         // when
         organizationId = "20"; // 조직 ID 변경
-        String responseMessage = licenseService.createLicense(license, organizationId, null);
+        License responseMessage = licenseService.createLicense(license);
 
         // then
         assertThat(responseMessage).isEqualTo("This is the post and the object is: " + license.toString());
@@ -49,10 +49,9 @@ class LicenseServiceTest {
 
         // given
         License license = null;
-        String organizationId = "1";
 
         // when
-        String responseMessage = licenseService.createLicense(license, organizationId, null);
+        License responseMessage = licenseService.createLicense(license);
 
         // then
         assertThat(responseMessage).isNull();

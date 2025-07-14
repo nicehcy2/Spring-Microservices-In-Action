@@ -3,11 +3,20 @@ spring:
     name: config-server
   profiles:
     active: native
+      # - git
   cloud:
     config:
       server:
         native:
           search-locations: classpath:/config
 
+        #git:
+        #  uri: https://github.com/kilimtever/config.git
+        #  search-paths: .
+        #  default-label: branch
+
 server:
   port: 8071
+
+encrypt:
+  key: secretkey
