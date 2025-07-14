@@ -63,7 +63,6 @@ class LicenseControllerTest {
     }
 
     private static void setResponse(String organization, String licenseId, License response) {
-        response.setId(1);
         response.setLicenseId(licenseId);
         response.setDescription("Software product");
         response.setOrganizationId(organization);
