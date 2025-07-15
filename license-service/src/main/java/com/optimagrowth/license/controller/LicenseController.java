@@ -6,7 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Locale;
+import java.util.List;
 
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
@@ -61,5 +61,18 @@ public class LicenseController {
             @PathVariable String licenseId) {
 
         return ResponseEntity.ok(licenseService.deleteLicense(licenseId));
+    }
+
+    @GetMapping(value="/{licenseId}/{clientType}")
+    public License getLicensesWithClient( @PathVariable("organizationId") String organizationId,
+                                          @PathVariable("licenseId") String licenseId,
+                                          @PathVariable("clientType") String clientType) {
+
+        return licenseService.getLicense(licenseId, organizationId, clientType);
+    }
+
+    @GetMapping(value="/")
+    public List<License> getLicenses(@PathVariable("organizationId") String organizationId) {
+        return licenseService.getLicensesByOrganization(organizationId);
     }
 }
